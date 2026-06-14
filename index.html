@@ -1,745 +1,1205 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="NOVA OFFICIAL — Independent App Development & Website Development Brand. Android apps, websites, AI chatbot solutions. Founded by Vikas Choudhary.">
-  <meta name="theme-color" content="#000000">
-  <title>NOVA OFFICIAL | Futuristic Digital Solutions</title>
-  <!-- Font Awesome Icons (CDN) for clean icons, no heavy framework -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#0a0a0f" />
+<title>NOVA — Custom Apps & Websites Built for Real Businesses</title>
+<meta name="description" content="NOVA is an independent software development studio building Android apps, websites, web apps, business systems, AI solutions and automation tools for real businesses." />
+<meta name="keywords" content="Android app development, website development, web app development, business software, AI solutions, automation tools, custom software, NOVA" />
+<meta name="author" content="NOVA" />
 
-    body {
-      background-color: #000000;
-      font-family: 'Poppins', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
-      color: #FFFFFF;
-      overflow-x: hidden;
-      scroll-behavior: smooth;
-    }
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="NOVA — Custom Apps & Websites Built for Real Businesses" />
+<meta property="og:description" content="Independent software development studio building practical and scalable digital products." />
+<meta property="og:site_name" content="NOVA" />
+<meta property="og:locale" content="en_US" />
 
-    /* Custom Font Import */
-    @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="NOVA — Custom Apps & Websites Built for Real Businesses" />
+<meta name="twitter:description" content="Independent software development studio building practical and scalable digital products." />
 
-    /* Loading Screen */
-    .loading-screen {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: #000000;
-      z-index: 9999;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      transition: opacity 0.8s ease, visibility 0.8s;
-      backdrop-filter: blur(2px);
-    }
-    .loading-screen.hidden {
-      opacity: 0;
-      visibility: hidden;
-    }
-    .loader-logo {
-      width: 120px;
-      animation: pulseGlow 1.4s infinite alternate;
-    }
-    .loading-text {
-      margin-top: 20px;
-      letter-spacing: 3px;
-      font-weight: 300;
-      background: linear-gradient(135deg, #00E5FF, #00BFFF);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      font-size: 1rem;
-    }
-    @keyframes pulseGlow {
-      0% { filter: drop-shadow(0 0 2px #00E5FF); opacity: 0.7; transform: scale(0.98);}
-      100% { filter: drop-shadow(0 0 18px #00E5FF); opacity: 1; transform: scale(1.02);}
-    }
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "NOVA",
+  "description": "Independent software development studio building Android apps, websites, web apps, business systems, AI solutions and automation tools.",
+  "url": "https://nova.dev",
+  "email": "officialnova9024@gmail.com",
+  "telephone": "+919024395877",
+  "priceRange": "$$",
+  "serviceType": ["Android App Development","Website Development","Web App Development","Business Software","AI Solutions","Automation Tools","Custom Software","Software Maintenance"]
+}
+</script>
 
-    /* Particles canvas background */
-    #particles-canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      pointer-events: none;
-      background: #000000;
-    }
+<style>
+  /* ---------- Reset & Base ---------- */
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    background:#05050a;
+    color:#e7e7ee;
+    line-height:1.6;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+  }
+  img,svg{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+  input,select,textarea{font-family:inherit;font-size:1rem}
 
-    /* Mouse Glow Effect Container */
-    .mouse-glow {
-      position: fixed;
-      width: 450px;
-      height: 450px;
-      background: radial-gradient(circle, rgba(0,229,255,0.12) 0%, rgba(0,191,255,0) 70%);
-      border-radius: 50%;
-      pointer-events: none;
-      transform: translate(-50%, -50%);
-      z-index: 999;
-      transition: transform 0.05s linear;
-      will-change: transform;
-    }
+  :root{
+    --bg:#05050a;
+    --bg-2:#0b0b14;
+    --surface:rgba(255,255,255,0.04);
+    --surface-2:rgba(255,255,255,0.06);
+    --border:rgba(255,255,255,0.08);
+    --border-strong:rgba(255,255,255,0.14);
+    --text:#e7e7ee;
+    --text-dim:#9a9aae;
+    --text-mute:#6b6b80;
+    --accent:#8b5cf6;
+    --accent-2:#22d3ee;
+    --accent-3:#f472b6;
+    --grad:linear-gradient(135deg,#8b5cf6 0%,#22d3ee 100%);
+    --grad-2:linear-gradient(135deg,#f472b6 0%,#8b5cf6 50%,#22d3ee 100%);
+    --radius:16px;
+    --radius-sm:10px;
+    --shadow:0 20px 60px -20px rgba(139,92,246,0.25);
+  }
 
-    /* Glassmorphism & general */
-    .glass-card, .service-card, .project-card, .why-card, .testimonial-placeholder, .founder-card, .contact-card {
-      background: rgba(10, 10, 10, 0.65);
-      backdrop-filter: blur(12px);
-      border-radius: 28px;
-      border: 1px solid rgba(0, 229, 255, 0.25);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.6), 0 0 12px rgba(0,229,255,0.2);
-      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-    }
-    .glass-card:hover, .service-card:hover, .project-card:hover, .why-card:hover {
-      border-color: #00E5FF;
-      box-shadow: 0 20px 35px -12px rgba(0,229,255,0.3), 0 0 18px rgba(0,229,255,0.4);
-      transform: translateY(-6px);
-    }
+  /* ---------- Background ---------- */
+  .bg-grid{
+    position:fixed;inset:0;z-index:-2;pointer-events:none;
+    background:
+      radial-gradient(1200px 600px at 80% -10%,rgba(139,92,246,0.18),transparent 60%),
+      radial-gradient(900px 500px at -10% 30%,rgba(34,211,238,0.12),transparent 60%),
+      radial-gradient(800px 500px at 50% 110%,rgba(244,114,182,0.10),transparent 60%),
+      var(--bg);
+  }
+  .bg-grid::before{
+    content:"";position:absolute;inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.035) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,0.035) 1px,transparent 1px);
+    background-size:60px 60px;
+    mask-image:radial-gradient(ellipse at center,black 30%,transparent 75%);
+    -webkit-mask-image:radial-gradient(ellipse at center,black 30%,transparent 75%);
+  }
+  .orb{
+    position:fixed;border-radius:50%;filter:blur(90px);opacity:0.55;z-index:-1;pointer-events:none;
+    animation:float 18s ease-in-out infinite;
+  }
+  .orb.a{width:420px;height:420px;background:#8b5cf6;top:-120px;right:-120px}
+  .orb.b{width:380px;height:380px;background:#22d3ee;bottom:-120px;left:-100px;animation-delay:-6s}
+  .orb.c{width:300px;height:300px;background:#f472b6;top:40%;left:50%;animation-delay:-12s;opacity:0.35}
+  @keyframes float{
+    0%,100%{transform:translate(0,0) scale(1)}
+    50%{transform:translate(40px,-30px) scale(1.08)}
+  }
 
-    /* Neon Buttons */
-    .neon-btn {
-      background: transparent;
-      border: 2px solid #00E5FF;
-      color: #00E5FF;
-      padding: 12px 28px;
-      border-radius: 60px;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      transition: all 0.3s ease;
-      cursor: pointer;
-      backdrop-filter: blur(5px);
-      font-size: 0.95rem;
-    }
-    .neon-btn-primary {
-      background: linear-gradient(135deg, #00E5FF, #0099cc);
-      border: none;
-      color: #000;
-      font-weight: 700;
-      box-shadow: 0 0 12px #00E5FF;
-    }
-    .neon-btn-primary:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 24px #00E5FF;
-      background: linear-gradient(135deg, #33eeff, #00BFFF);
-      color: black;
-    }
-    .neon-btn:hover {
-      background: rgba(0, 229, 255, 0.15);
-      box-shadow: 0 0 12px #00E5FF;
-      transform: translateY(-2px);
-    }
+  /* ---------- Loader ---------- */
+  .loader{
+    position:fixed;inset:0;background:#05050a;z-index:9999;
+    display:flex;align-items:center;justify-content:center;
+    transition:opacity .6s ease,visibility .6s ease;
+  }
+  .loader.hidden{opacity:0;visibility:hidden}
+  .loader-logo{
+    font-size:2rem;font-weight:800;letter-spacing:.4em;
+    background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+    animation:pulse 1.4s ease-in-out infinite;
+  }
+  @keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
 
-    /* Navbar */
-    .navbar {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(0, 229, 255, 0.4);
-      padding: 0.8rem 5%;
-    }
-    .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .logo-img {
-      height: 45px;
-      width: auto;
-      filter: drop-shadow(0 0 6px #00E5FF);
-      transition: 0.2s;
-    }
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-    .nav-links a {
-      text-decoration: none;
-      color: #fff;
-      font-weight: 500;
-      transition: 0.2s;
-      font-size: 1rem;
-    }
-    .nav-links a:hover {
-      color: #00E5FF;
-      text-shadow: 0 0 6px #00E5FF;
-    }
-    .menu-icon {
-      display: none;
-      font-size: 1.8rem;
-      cursor: pointer;
-      color: #00E5FF;
-    }
+  /* ---------- Layout ---------- */
+  .container{max-width:1200px;margin:0 auto;padding:0 24px}
+  section{padding:120px 0;position:relative}
+  @media (max-width:768px){section{padding:80px 0}}
 
-    /* Mobile Menu Overlay */
-    .mobile-menu-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.95);
-      backdrop-filter: blur(20px);
-      z-index: 2000;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      transform: translateX(100%);
-      transition: transform 0.4s cubic-bezier(0.2,0.9,0.4,1);
-    }
-    .mobile-menu-overlay.active {
-      transform: translateX(0);
-    }
-    .mobile-menu-logo {
-      width: 100px;
-      margin-bottom: 30px;
-    }
-    .mobile-menu-links {
-      list-style: none;
-      text-align: center;
-    }
-    .mobile-menu-links li {
-      margin: 20px 0;
-    }
-    .mobile-menu-links a {
-      font-size: 1.7rem;
-      font-weight: 500;
-      text-decoration: none;
-      color: white;
-      transition: 0.2s;
-    }
-    .mobile-menu-links a:hover {
-      color: #00E5FF;
-      letter-spacing: 2px;
-    }
-    .close-mobile {
-      position: absolute;
-      top: 30px;
-      right: 30px;
-      font-size: 2rem;
-      color: #00E5FF;
-      cursor: pointer;
-    }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:6px 14px;border-radius:999px;
+    background:var(--surface);border:1px solid var(--border);
+    font-size:.8rem;color:var(--text-dim);letter-spacing:.08em;text-transform:uppercase;
+    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  }
+  .eyebrow::before{
+    content:"";width:6px;height:6px;border-radius:50%;background:var(--grad);
+    box-shadow:0 0 10px var(--accent);
+  }
+  h1,h2,h3,h4{font-weight:700;letter-spacing:-0.02em;line-height:1.15;color:#fff}
+  h2{font-size:clamp(1.9rem,4vw,2.8rem);margin:18px 0 16px}
+  h3{font-size:1.25rem}
+  .section-head{max-width:720px;margin:0 auto 60px;text-align:center}
+  .section-head p{color:var(--text-dim);font-size:1.05rem}
 
-    /* Section Styling */
-    section {
-      padding: 90px 5%;
-      position: relative;
-      z-index: 2;
-    }
-    .section-title {
-      font-size: 2.5rem;
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 50px;
-      background: linear-gradient(135deg, #FFFFFF, #00E5FF);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      letter-spacing: -0.5px;
-    }
+  .gradient-text{
+    background:var(--grad-2);-webkit-background-clip:text;background-clip:text;color:transparent;
+  }
 
-    /* Hero */
-    .hero {
-      min-height: 90vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      flex-direction: column;
-    }
-    .hero-logo {
-      width: 100px;
-      margin-bottom: 20px;
-      filter: drop-shadow(0 0 16px #00E5FF);
-    }
-    .hero h1 {
-      font-size: 3.4rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, #FFF, #00E5FF);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-    .hero p {
-      font-size: 1.2rem;
-      max-width: 700px;
-      margin: 20px auto;
-      opacity: 0.9;
-    }
-    .btn-group {
-      display: flex;
-      gap: 25px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 20px;
-    }
+  /* ---------- Navbar ---------- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    padding:14px 0;
+    transition:all .3s ease;
+  }
+  .nav.scrolled{
+    background:rgba(5,5,10,0.7);
+    backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:20px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.25em;font-size:1.05rem}
+  .brand-mark{
+    width:32px;height:32px;border-radius:9px;
+    background:var(--grad);
+    display:grid;place-items:center;
+    box-shadow:0 8px 24px -8px rgba(139,92,246,.6);
+    position:relative;overflow:hidden;
+  }
+  .brand-mark::after{
+    content:"";position:absolute;inset:2px;border-radius:7px;
+    background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.4),transparent 50%);
+  }
+  .brand-mark svg{position:relative;z-index:1}
+  .nav-links{display:flex;gap:28px;align-items:center}
+  .nav-links a{font-size:.92rem;color:var(--text-dim);transition:color .2s}
+  .nav-links a:hover{color:#fff}
+  .nav-cta{
+    padding:9px 18px;border-radius:999px;
+    background:var(--grad);color:#fff;font-weight:600;font-size:.88rem;
+    transition:transform .2s,box-shadow .2s;
+  }
+  .nav-cta:hover{transform:translateY(-1px);box-shadow:0 10px 30px -10px rgba(139,92,246,.6)}
+  .burger{display:none;width:40px;height:40px;border-radius:10px;background:var(--surface);border:1px solid var(--border);place-items:center}
+  .burger span{width:18px;height:2px;background:#fff;position:relative;transition:.3s}
+  .burger span::before,.burger span::after{content:"";position:absolute;left:0;width:18px;height:2px;background:#fff;transition:.3s}
+  .burger span::before{top:-6px}.burger span::after{top:6px}
+  .burger.open span{background:transparent}
+  .burger.open span::before{top:0;transform:rotate(45deg)}
+  .burger.open span::after{top:0;transform:rotate(-45deg)}
 
-    /* Services & Projects Grid */
-    .services-grid, .projects-grid, .why-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin-top: 20px;
+  @media (max-width:860px){
+    .nav-links{
+      position:fixed;top:68px;left:16px;right:16px;
+      flex-direction:column;align-items:stretch;gap:4px;
+      padding:16px;border-radius:16px;
+      background:rgba(11,11,20,0.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+      border:1px solid var(--border);
+      transform:translateY(-10px);opacity:0;pointer-events:none;transition:.25s;
     }
-    .service-card, .project-card, .why-card {
-      padding: 2rem 1.5rem;
-      text-align: center;
-    }
-    .service-card i, .why-card i {
-      font-size: 2.8rem;
-      color: #00E5FF;
-      margin-bottom: 1rem;
-    }
-    .project-img {
-      width: 100%;
-      height: 180px;
-      background: linear-gradient(145deg, #0a0f1a, #010101);
-      border-radius: 20px;
-      margin-bottom: 1.2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid #00E5FF55;
-      font-size: 2.5rem;
-      color: #00E5FF;
-      transition: 0.2s;
-    }
-    .project-card h3 {
-      font-size: 1.6rem;
-      margin-bottom: 10px;
-    }
-    .project-card p {
-      font-size: 0.9rem;
-      opacity: 0.8;
-    }
+    .nav-links.open{transform:translateY(0);opacity:1;pointer-events:auto}
+    .nav-links a{padding:12px;border-radius:10px}
+    .nav-links a:hover{background:var(--surface)}
+    .burger{display:grid}
+  }
 
-    /* Founder */
-    .founder-card {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 2rem;
-      text-align: center;
-    }
-    .founder-name {
-      font-size: 2.2rem;
-      font-weight: 700;
-      margin: 20px 0 10px;
-    }
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:14px 24px;border-radius:12px;font-weight:600;font-size:.95rem;
+    transition:transform .2s,box-shadow .2s,background .2s,border-color .2s;
+    white-space:nowrap;
+  }
+  .btn-primary{
+    background:var(--grad);color:#fff;
+    box-shadow:0 10px 30px -10px rgba(139,92,246,.5);
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 40px -10px rgba(139,92,246,.7)}
+  .btn-ghost{
+    background:var(--surface);border:1px solid var(--border-strong);color:#fff;
+    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  }
+  .btn-ghost:hover{background:var(--surface-2);border-color:rgba(255,255,255,.22);transform:translateY(-2px)}
+  .btn svg{width:18px;height:18px}
 
-    /* Testimonial Placeholder */
-    .testimonial-placeholder {
-      padding: 3rem;
-      text-align: center;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-    .testimonial-placeholder i {
-      font-size: 3rem;
-      color: #00E5FF;
-      margin-bottom: 20px;
-    }
+  /* ---------- Hero ---------- */
+  .hero{
+    min-height:100vh;display:flex;align-items:center;
+    padding:140px 0 80px;position:relative;overflow:hidden;
+  }
+  .hero-inner{text-align:center;max-width:900px;margin:0 auto}
+  .hero h1{
+    font-size:clamp(2.2rem,6vw,4.5rem);
+    letter-spacing:-0.035em;line-height:1.05;
+    margin:24px 0 20px;
+  }
+  .hero h1 .word{display:inline-block}
+  .hero p.lead{
+    font-size:clamp(1rem,1.6vw,1.2rem);
+    color:var(--text-dim);max-width:640px;margin:0 auto 36px;
+  }
+  .hero-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .hero-meta{
+    margin-top:50px;display:flex;gap:28px;justify-content:center;flex-wrap:wrap;
+    color:var(--text-mute);font-size:.88rem;
+  }
+  .hero-meta span{display:inline-flex;align-items:center;gap:8px}
+  .hero-meta svg{width:16px;height:16px;color:var(--accent-2)}
 
-    /* Contact */
-    .contact-card {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 2.5rem;
-      text-align: center;
-    }
-    .telegram-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      background: #0088cc20;
-      border: 1px solid #00E5FF;
-      padding: 14px 32px;
-      border-radius: 60px;
-      text-decoration: none;
-      font-weight: bold;
-      margin-top: 20px;
-      backdrop-filter: blur(4px);
-      transition: 0.2s;
-    }
+  .hero-glow{
+    position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    width:900px;height:600px;border-radius:50%;
+    background:radial-gradient(circle,rgba(139,92,246,0.25),transparent 60%);
+    filter:blur(40px);pointer-events:none;z-index:-1;
+  }
 
-    /* Footer */
-    footer {
-      background: rgba(0,0,0,0.8);
-      border-top: 1px solid #00E5FF40;
-      padding: 3rem 5% 1.5rem;
-    }
-    .footer-content {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 2rem;
-    }
-    .footer-logo img {
-      height: 55px;
-    }
-    .footer-links ul {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-    }
-    .footer-links a {
-      text-decoration: none;
-      color: #ccc;
-      transition: 0.2s;
-    }
-    .footer-links a:hover { color: #00E5FF; }
-    .copyright {
-      text-align: center;
-      margin-top: 3rem;
-      font-size: 0.8rem;
-      opacity: 0.7;
-    }
+  /* ---------- Glass Card ---------- */
+  .glass{
+    background:linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02));
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    position:relative;overflow:hidden;
+  }
+  .glass::before{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(255,255,255,0.06),transparent 40%);
+    pointer-events:none;
+  }
 
-    /* Back to top */
-    .back-to-top {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      background: #00E5FF;
-      color: black;
-      width: 48px;
-      height: 48px;
-      border-radius: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      opacity: 0;
-      visibility: hidden;
-      transition: 0.3s;
-      z-index: 100;
-      box-shadow: 0 0 12px #00E5FF;
-    }
-    .back-to-top.show {
-      opacity: 1;
-      visibility: visible;
-    }
+  /* ---------- About ---------- */
+  .about-wrap{
+    display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:center;
+  }
+  @media (max-width:860px){.about-wrap{grid-template-columns:1fr;gap:40px}}
+  .about-wrap p{color:var(--text-dim);margin-bottom:16px;font-size:1.02rem}
+  .about-visual{
+    aspect-ratio:1/1;border-radius:24px;
+    background:
+      radial-gradient(circle at 30% 30%,rgba(139,92,246,0.35),transparent 50%),
+      radial-gradient(circle at 70% 70%,rgba(34,211,238,0.25),transparent 50%),
+      rgba(255,255,255,0.03);
+    border:1px solid var(--border);
+    position:relative;overflow:hidden;
+    display:grid;place-items:center;
+  }
+  .about-visual::after{
+    content:"";position:absolute;inset:0;
+    background:
+      linear-gradient(90deg,transparent 49.5%,rgba(255,255,255,0.05) 50%,transparent 50.5%),
+      linear-gradient(0deg,transparent 49.5%,rgba(255,255,255,0.05) 50%,transparent 50.5%);
+    background-size:40px 40px;
+    mask-image:radial-gradient(circle at center,black 30%,transparent 70%);
+    -webkit-mask-image:radial-gradient(circle at center,black 30%,transparent 70%);
+  }
+  .about-visual .core{
+    width:140px;height:140px;border-radius:50%;
+    background:var(--grad);
+    box-shadow:0 0 80px rgba(139,92,246,0.5);
+    animation:pulse 3s ease-in-out infinite;
+    position:relative;z-index:1;
+  }
+  .about-visual .ring{
+    position:absolute;border:1px solid var(--border-strong);border-radius:50%;
+    animation:spin 20s linear infinite;
+  }
+  .about-visual .ring.r1{width:60%;height:60%}
+  .about-visual .ring.r2{width:80%;height:80%;animation-duration:30s;animation-direction:reverse}
+  .about-visual .ring.r3{width:95%;height:95%;animation-duration:40s}
+  @keyframes spin{to{transform:rotate(360deg)}}
 
-    /* Scroll Reveal */
-    .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s ease;
-    }
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  /* ---------- Services ---------- */
+  .services-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
+  }
+  @media (max-width:960px){.services-grid{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:600px){.services-grid{grid-template-columns:1fr}}
+  .service-card{
+    padding:28px;border-radius:var(--radius);
+    background:linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.015));
+    border:1px solid var(--border);
+    transition:transform .3s,border-color .3s,background .3s;
+    position:relative;overflow:hidden;
+  }
+  .service-card::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:1px;
+    background:linear-gradient(90deg,transparent,rgba(139,92,246,.6),transparent);
+    opacity:0;transition:opacity .3s;
+  }
+  .service-card:hover{
+    transform:translateY(-6px);
+    border-color:var(--border-strong);
+    background:linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02));
+  }
+  .service-card:hover::before{opacity:1}
+  .service-icon{
+    width:48px;height:48px;border-radius:12px;
+    background:linear-gradient(135deg,rgba(139,92,246,0.2),rgba(34,211,238,0.15));
+    border:1px solid var(--border-strong);
+    display:grid;place-items:center;margin-bottom:18px;color:#c4b5fd;
+  }
+  .service-icon svg{width:22px;height:22px}
+  .service-card h3{margin-bottom:8px;font-size:1.1rem}
+  .service-card p{color:var(--text-dim);font-size:.94rem}
 
-    /* Responsive */
-    @media (max-width: 850px) {
-      .nav-links { display: none; }
-      .menu-icon { display: block; }
-      .hero h1 { font-size: 2.2rem; }
-      .section-title { font-size: 2rem; }
-      section { padding: 60px 5%; }
-    }
-    @media (max-width: 550px) {
-      .btn-group { gap: 15px; }
-      .hero h1 { font-size: 1.9rem; }
-    }
-  </style>
+  /* ---------- Why Choose ---------- */
+  .why-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
+  }
+  @media (max-width:860px){.why-grid{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:520px){.why-grid{grid-template-columns:1fr}}
+  .why-item{
+    padding:24px;border-radius:14px;
+    background:var(--surface);border:1px solid var(--border);
+    display:flex;gap:14px;align-items:flex-start;
+    transition:transform .25s,border-color .25s;
+  }
+  .why-item:hover{transform:translateY(-3px);border-color:var(--border-strong)}
+  .why-item .dot{
+    flex-shrink:0;width:36px;height:36px;border-radius:10px;
+    background:var(--grad);display:grid;place-items:center;color:#fff;
+  }
+  .why-item .dot svg{width:18px;height:18px}
+  .why-item h4{font-size:1rem;margin-bottom:4px}
+  .why-item p{color:var(--text-dim);font-size:.88rem}
+
+  /* ---------- Timeline ---------- */
+  .timeline{
+    position:relative;max-width:820px;margin:0 auto;
+    padding:20px 0;
+  }
+  .timeline::before{
+    content:"";position:absolute;left:24px;top:0;bottom:0;width:2px;
+    background:linear-gradient(180deg,transparent,var(--accent) 10%,var(--accent-2) 90%,transparent);
+    opacity:.5;
+  }
+  @media (min-width:768px){
+    .timeline::before{left:50%;transform:translateX(-50%)}
+  }
+  .tl-item{
+    position:relative;padding:10px 0 30px 70px;
+  }
+  @media (min-width:768px){
+    .tl-item{padding:10px 0 40px;width:50%}
+    .tl-item:nth-child(odd){margin-left:0;padding-right:50px;text-align:right}
+    .tl-item:nth-child(even){margin-left:50%;padding-left:50px;text-align:left}
+  }
+  .tl-dot{
+    position:absolute;left:14px;top:14px;
+    width:22px;height:22px;border-radius:50%;
+    background:var(--bg);border:2px solid var(--accent);
+    box-shadow:0 0 0 4px rgba(139,92,246,.15),0 0 20px rgba(139,92,246,.5);
+  }
+  @media (min-width:768px){
+    .tl-item:nth-child(odd) .tl-dot{left:auto;right:-11px}
+    .tl-item:nth-child(even) .tl-dot{left:-11px}
+  }
+  .tl-card{
+    padding:18px 22px;border-radius:14px;
+    background:var(--surface);border:1px solid var(--border);
+    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    transition:transform .25s,border-color .25s;
+  }
+  .tl-card:hover{transform:translateY(-3px);border-color:var(--border-strong)}
+  .tl-num{
+    font-size:.78rem;color:var(--accent-2);letter-spacing:.15em;font-weight:600;margin-bottom:4px;
+  }
+  .tl-card h4{font-size:1.05rem;margin-bottom:4px}
+  .tl-card p{color:var(--text-dim);font-size:.88rem}
+
+  /* ---------- Portfolio ---------- */
+  .portfolio-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
+  }
+  @media (max-width:860px){.portfolio-grid{grid-template-columns:1fr}}
+  .project-card{
+    padding:28px;border-radius:var(--radius);
+    background:linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.015));
+    border:1px solid var(--border);
+    transition:transform .3s,border-color .3s;
+    position:relative;overflow:hidden;
+  }
+  .project-card:hover{transform:translateY(-4px);border-color:var(--border-strong)}
+  .project-card .logo{
+    width:56px;height:56px;border-radius:14px;
+    background:var(--grad);display:grid;place-items:center;
+    font-weight:800;color:#fff;font-size:1.1rem;letter-spacing:.05em;
+    margin-bottom:18px;box-shadow:0 10px 30px -10px rgba(139,92,246,.5);
+  }
+  .project-card h3{font-size:1.15rem;margin-bottom:6px}
+  .project-card p{color:var(--text-dim);font-size:.92rem;margin-bottom:16px}
+  .status{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:6px 12px;border-radius:999px;
+    font-size:.78rem;font-weight:600;letter-spacing:.03em;
+    border:1px solid var(--border);
+  }
+  .status::before{
+    content:"";width:7px;height:7px;border-radius:50%;
+  }
+  .status.dev{background:rgba(34,211,238,0.08);color:#67e8f9;border-color:rgba(34,211,238,0.25)}
+  .status.dev::before{background:#22d3ee;box-shadow:0 0 10px #22d3ee;animation:pulse 1.8s infinite}
+  .status.plan{background:rgba(139,92,246,0.08);color:#c4b5fd;border-color:rgba(139,92,246,0.25)}
+  .status.plan::before{background:#8b5cf6;box-shadow:0 0 10px #8b5cf6}
+  .status.concept{background:rgba(244,114,182,0.08);color:#f9a8d4;border-color:rgba(244,114,182,0.25)}
+  .status.concept::before{background:#f472b6;box-shadow:0 0 10px #f472b6}
+
+  /* ---------- Inquiry Form ---------- */
+  .inquiry-wrap{
+    display:grid;grid-template-columns:1fr 1.2fr;gap:40px;align-items:start;
+  }
+  @media (max-width:860px){.inquiry-wrap{grid-template-columns:1fr}}
+  .inquiry-info{padding:32px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--border)}
+  .inquiry-info h3{font-size:1.3rem;margin-bottom:12px}
+  .inquiry-info p{color:var(--text-dim);margin-bottom:20px}
+  .inquiry-info .contact-row{
+    display:flex;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--border);
+    font-size:.94rem;
+  }
+  .inquiry-info .contact-row:first-of-type{border-top:none}
+  .inquiry-info .contact-row svg{width:18px;height:18px;color:var(--accent-2)}
+  .inquiry-info .contact-row a{color:#fff}
+  .inquiry-info .contact-row a:hover{color:var(--accent-2)}
+
+  form.inquiry{
+    padding:32px;border-radius:var(--radius);
+    background:linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.015));
+    border:1px solid var(--border);
+  }
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media (max-width:600px){.form-row{grid-template-columns:1fr}}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-size:.82rem;color:var(--text-dim);margin-bottom:6px;letter-spacing:.02em}
+  .field input,.field select,.field textarea{
+    width:100%;padding:12px 14px;border-radius:10px;
+    background:rgba(0,0,0,0.3);border:1px solid var(--border);color:#fff;
+    transition:border-color .2s,background .2s;
+  }
+  .field input:focus,.field select:focus,.field textarea:focus{
+    outline:none;border-color:var(--accent);background:rgba(0,0,0,0.45);
+  }
+  .field textarea{resize:vertical;min-height:110px}
+  .field select{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239a9aae' stroke-width='2'><polyline points='6 9 12 15 18 9'/></svg>");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+  .field select option{background:#0b0b14;color:#fff}
+  form button[type=submit]{width:100%;justify-content:center;margin-top:6px}
+
+  /* ---------- FAQ ---------- */
+  .faq-list{max-width:780px;margin:0 auto}
+  .faq-item{
+    border:1px solid var(--border);border-radius:14px;
+    background:var(--surface);margin-bottom:12px;overflow:hidden;
+    transition:border-color .2s;
+  }
+  .faq-item:hover{border-color:var(--border-strong)}
+  .faq-q{
+    width:100%;text-align:left;padding:18px 22px;
+    display:flex;justify-content:space-between;align-items:center;gap:16px;
+    font-weight:600;font-size:1rem;color:#fff;
+  }
+  .faq-q .plus{
+    width:26px;height:26px;border-radius:50%;
+    background:var(--surface-2);border:1px solid var(--border);
+    display:grid;place-items:center;flex-shrink:0;
+    transition:transform .3s,background .3s;
+  }
+  .faq-item.open .faq-q .plus{transform:rotate(45deg);background:var(--grad)}
+  .faq-a{
+    max-height:0;overflow:hidden;transition:max-height .35s ease;
+    color:var(--text-dim);font-size:.94rem;
+  }
+  .faq-a-inner{padding:0 22px 20px}
+  .faq-item.open .faq-a{max-height:300px}
+
+  /* ---------- Contact ---------- */
+  .contact-card{
+    max-width:780px;margin:0 auto;padding:50px 40px;
+    border-radius:24px;text-align:center;
+    background:
+      radial-gradient(circle at 20% 0%,rgba(139,92,246,0.2),transparent 50%),
+      radial-gradient(circle at 80% 100%,rgba(34,211,238,0.15),transparent 50%),
+      rgba(255,255,255,0.03);
+    border:1px solid var(--border-strong);
+    position:relative;overflow:hidden;
+  }
+  .contact-card h2{margin-bottom:10px}
+  .contact-card p{color:var(--text-dim);margin-bottom:28px}
+  .contact-channels{
+    display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:18px;
+  }
+  .channel{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:12px 20px;border-radius:12px;
+    background:var(--surface);border:1px solid var(--border);
+    font-size:.94rem;transition:transform .2s,border-color .2s;
+  }
+  .channel:hover{transform:translateY(-2px);border-color:var(--border-strong)}
+  .channel svg{width:18px;height:18px}
+  .response-note{color:var(--text-mute);font-size:.88rem;margin-top:12px}
+
+  /* ---------- Privacy ---------- */
+  .privacy{
+    max-width:820px;margin:0 auto;padding:36px;border-radius:var(--radius);
+    background:var(--surface);border:1px solid var(--border);
+  }
+  .privacy h3{margin-bottom:14px;font-size:1.2rem}
+  .privacy p{color:var(--text-dim);margin-bottom:12px;font-size:.95rem}
+  .privacy ul{list-style:none;padding:0;margin:12px 0}
+  .privacy li{
+    padding:8px 0 8px 26px;position:relative;color:var(--text-dim);font-size:.94rem;
+  }
+  .privacy li::before{
+    content:"";position:absolute;left:0;top:16px;width:14px;height:2px;
+    background:var(--grad);border-radius:2px;
+  }
+
+  /* ---------- Footer ---------- */
+  footer{
+    padding:60px 0 30px;border-top:1px solid var(--border);
+    background:rgba(5,5,10,0.6);
+  }
+  .footer-top{
+    display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;margin-bottom:40px;
+  }
+  @media (max-width:760px){.footer-top{grid-template-columns:1fr;gap:30px}}
+  .footer-brand p{color:var(--text-dim);margin-top:14px;max-width:340px;font-size:.92rem}
+  .footer-col h5{font-size:.82rem;letter-spacing:.15em;text-transform:uppercase;color:var(--text-mute);margin-bottom:14px}
+  .footer-col a{display:block;color:var(--text-dim);padding:6px 0;font-size:.94rem;transition:color .2s}
+  .footer-col a:hover{color:#fff}
+  .footer-bottom{
+    padding-top:24px;border-top:1px solid var(--border);
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
+    color:var(--text-mute);font-size:.86rem;
+  }
+
+  /* ---------- Floating Buttons ---------- */
+  .float-wa{
+    position:fixed;right:20px;bottom:20px;z-index:90;
+    width:58px;height:58px;border-radius:50%;
+    background:#25D366;color:#fff;
+    display:grid;place-items:center;
+    box-shadow:0 10px 30px -5px rgba(37,211,102,.5);
+    transition:transform .25s;
+    animation:waPulse 2.4s infinite;
+  }
+  .float-wa:hover{transform:scale(1.08)}
+  .float-wa svg{width:28px;height:28px}
+  @keyframes waPulse{
+    0%,100%{box-shadow:0 10px 30px -5px rgba(37,211,102,.5),0 0 0 0 rgba(37,211,102,.5)}
+    50%{box-shadow:0 10px 30px -5px rgba(37,211,102,.5),0 0 0 14px rgba(37,211,102,0)}
+  }
+
+  .sticky-quote{
+    position:fixed;left:20px;bottom:20px;z-index:90;
+    padding:12px 20px;border-radius:999px;
+    background:var(--grad);color:#fff;font-weight:600;font-size:.9rem;
+    display:inline-flex;align-items:center;gap:8px;
+    box-shadow:0 10px 30px -10px rgba(139,92,246,.6);
+    opacity:0;transform:translateY(20px);pointer-events:none;
+    transition:opacity .3s,transform .3s;
+  }
+  .sticky-quote.visible{opacity:1;transform:translateY(0);pointer-events:auto}
+  .sticky-quote:hover{transform:translateY(-2px)}
+  .sticky-quote svg{width:16px;height:16px}
+  @media (max-width:520px){
+    .sticky-quote{left:14px;bottom:86px;padding:10px 16px;font-size:.82rem}
+    .float-wa{right:14px;bottom:14px;width:52px;height:52px}
+    .float-wa svg{width:24px;height:24px}
+  }
+
+  /* ---------- Reveal Animation ---------- */
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
+  .reveal.in{opacity:1;transform:translateY(0)}
+
+  /* ---------- Selection ---------- */
+  ::selection{background:rgba(139,92,246,.35);color:#fff}
+
+  /* ---------- Scrollbar ---------- */
+  ::-webkit-scrollbar{width:10px;height:10px}
+  ::-webkit-scrollbar-track{background:#05050a}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(#8b5cf6,#22d3ee);border-radius:10px}
+</style>
 </head>
 <body>
 
-<!-- LOADING SCREEN -->
-<div class="loading-screen" id="loadingScreen">
-  <img src="https://i.ibb.co/Mkn5Hc9X/file-00000000d28472079ed407f3fc4882ca.png" alt="NOVA OFFICIAL Logo" class="loader-logo">
-  <div class="loading-text">INITIALIZING NEON CORE...</div>
+<!-- Loader -->
+<div class="loader" id="loader">
+  <div class="loader-logo">NOVA</div>
 </div>
 
-<!-- PARTICLES BACKGROUND CANVAS -->
-<canvas id="particles-canvas"></canvas>
+<!-- Background -->
+<div class="bg-grid"></div>
+<div class="orb a"></div>
+<div class="orb b"></div>
+<div class="orb c"></div>
 
-<!-- MOUSE GLOW ELEMENT -->
-<div class="mouse-glow" id="mouseGlow"></div>
-
-<!-- MOBILE MENU OVERLAY (includes logo) -->
-<div class="mobile-menu-overlay" id="mobileMenuOverlay">
-  <div class="close-mobile" id="closeMobileMenu"><i class="fas fa-times-circle"></i></div>
-  <img src="https://i.ibb.co/Mkn5Hc9X/file-00000000d28472079ed407f3fc4882ca.png" alt="NOVA OFFICIAL" class="mobile-menu-logo">
-  <ul class="mobile-menu-links">
-    <li><a href="#home">Home</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</div>
-
-<!-- MAIN WEBSITE -->
-<nav class="navbar" id="navbar">
-  <div class="nav-container">
-    <a href="#home"><img src="https://i.ibb.co/Mkn5Hc9X/file-00000000d28472079ed407f3fc4882ca.png" alt="NOVA OFFICIAL Logo" class="logo-img"></a>
-    <ul class="nav-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <div class="menu-icon" id="menuIcon"><i class="fas fa-bars"></i></div>
+<!-- Navbar -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#home" class="brand" aria-label="NOVA home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>
+      </span>
+      NOVA
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#portfolio">Work</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact" class="nav-cta">Get in Touch</a>
+    </div>
+    <button class="burger" id="burger" aria-label="Menu"><span></span></button>
   </div>
 </nav>
 
-<main>
-  <!-- HERO SECTION (includes logo as required) -->
-  <section id="home" class="hero">
-    <img src="https://i.ibb.co/Mkn5Hc9X/file-00000000d28472079ed407f3fc4882ca.png" alt="NOVA OFFICIAL" class="hero-logo">
-    <h1>Building The Future With Modern Digital Solutions</h1>
-    <p>NOVA OFFICIAL develops Android applications, websites, and AI-powered solutions designed for modern users and businesses.</p>
-    <div class="btn-group">
-      <button class="neon-btn neon-btn-primary" id="viewServicesBtn">View Services</button>
-      <button class="neon-btn" id="contactBtnHero">Contact</button>
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-glow"></div>
+  <div class="container hero-inner">
+    <span class="eyebrow reveal">Independent Software Studio</span>
+    <h1 class="reveal">
+      Custom Apps & Websites<br/>
+      <span class="gradient-text">Built for Real Businesses.</span>
+    </h1>
+    <p class="lead reveal">
+      NOVA is an independent software development studio crafting Android apps, modern websites, web applications, business systems, AI-powered tools and automation — designed to solve real problems for real businesses.
+    </p>
+    <div class="hero-ctas reveal">
+      <a class="btn btn-primary" href="https://wa.me/919024395877" target="_blank" rel="noopener">
+        Start Your Project
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a class="btn btn-ghost" href="https://wa.me/919024395877" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.78 11.78 0 0 0 12.04 0C5.5 0 .2 5.3.2 11.84c0 2.09.55 4.13 1.6 5.93L0 24l6.4-1.68a11.8 11.8 0 0 0 5.64 1.44h.01c6.54 0 11.84-5.3 11.84-11.84 0-3.16-1.23-6.13-3.37-8.44zM12.04 21.6h-.01a9.76 9.76 0 0 1-4.97-1.36l-.36-.21-3.8 1 1.02-3.7-.23-.38a9.75 9.75 0 0 1-1.5-5.11c0-5.38 4.38-9.76 9.76-9.76 2.6 0 5.05 1.01 6.9 2.85a9.68 9.68 0 0 1 2.85 6.9c0 5.38-4.38 9.77-9.66 9.77zm5.42-7.36c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.22 3.08.15.2 2.1 3.2 5.08 4.49.71.3 1.26.48 1.69.62.71.22 1.36.19 1.87.12.57-.08 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35z"/></svg>
+        Chat on WhatsApp
+      </a>
     </div>
-  </section>
-
-  <!-- ABOUT SECTION -->
-  <section id="about" class="reveal">
-    <h2 class="section-title">About NOVA OFFICIAL</h2>
-    <div class="glass-card" style="max-width: 900px; margin: 0 auto; padding: 2rem; text-align: center;">
-      <p style="font-size: 1.1rem; line-height: 1.5;">NOVA OFFICIAL is an independent technology brand founded by Vikas Choudhary. The focus is on Android app development, website development, and AI-powered solutions. The goal is to transform ideas into modern digital experiences through innovation, creativity, and technology. Helping individuals, creators, and businesses turn ideas into modern digital products.</p>
+    <div class="hero-meta reveal">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Direct Communication</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Custom Solutions</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Modern Tech Stack</span>
     </div>
-  </section>
-
-  <!-- SERVICES SECTION -->
-  <section id="services" class="reveal">
-    <h2 class="section-title">Core Services</h2>
-    <div class="services-grid">
-      <div class="service-card"><i class="fas fa-mobile-alt"></i><h3>Android App Development</h3><p>Custom Android applications designed for performance, usability, and modern user experiences.</p></div>
-      <div class="service-card"><i class="fas fa-code"></i><h3>Website Development</h3><p>Responsive and modern websites optimized for speed, accessibility, and professional branding.</p></div>
-      <div class="service-card"><i class="fas fa-brain"></i><h3>AI Chatbot Solutions</h3><p>AI-powered conversational systems designed to improve user engagement and automation.</p></div>
-    </div>
-  </section>
-
-  <!-- PROJECTS SECTION -->
-  <section id="projects" class="reveal">
-    <h2 class="section-title">Featured Projects</h2>
-    <div class="projects-grid">
-      <!-- Project 1: CipherAI -->
-      <div class="project-card"><div class="project-img"><i class="fas fa-lock fa-3x"></i></div><h3>CipherAI</h3><p>AI-driven encryption & security analysis suite for next-gen protection.</p></div>
-      <!-- Project 2: NOVA AI Online -->
-      <div class="project-card"><div class="project-img"><i class="fas fa-cloud-upload-alt fa-3x"></i></div><h3>NOVA AI Online</h3><p>Cloud-based AI assistant for real-time insights & automation.</p></div>
-      <!-- Project 3: NOVA AI Offline -->
-      <div class="project-card"><div class="project-img"><i class="fas fa-microchip fa-3x"></i></div><h3>NOVA AI Offline</h3><p>Local-first AI chatbot designed for privacy and offline functionality.</p></div>
-      <!-- Project 4: Coming Soon -->
-      <div class="project-card"><div class="project-img"><i class="fas fa-hourglass-half fa-3x"></i></div><h3>Coming Soon</h3><p>New revolutionary product in stealth development.</p></div>
-      <!-- Project 5: Coming Soon -->
-      <div class="project-card"><div class="project-img"><i class="fas fa-rocket fa-3x"></i></div><h3>Coming Soon</h3><p>Next-gen digital ecosystem — stay tuned.</p></div>
-    </div>
-  </section>
-
-  <!-- WHY NOVA SECTION -->
-  <section id="why-nova" class="reveal">
-    <h2 class="section-title">Why NOVA</h2>
-    <div class="why-grid">
-      <div class="why-card"><i class="fas fa-draw-polygon"></i><h3>Modern Design</h3><p>Cutting-edge interfaces.</p></div>
-      <div class="why-card"><i class="fas fa-smile-wink"></i><h3>Clean User Experience</h3><p>Intuitive flows, high retention.</p></div>
-      <div class="why-card"><i class="fas fa-mobile-alt"></i><h3>Mobile Friendly</h3><p>Fully responsive across devices.</p></div>
-      <div class="why-card"><i class="fas fa-tachometer-alt"></i><h3>Performance Focused</h3><p>Optimized speed & efficiency.</p></div>
-      <div class="why-card"><i class="fas fa-lightbulb"></i><h3>Creative Solutions</h3><p>Out-of-box thinking, innovation.</p></div>
-      <div class="why-card"><i class="fas fa-chart-line"></i><h3>Future Ready</h3><p>Scalable for tomorrow's tech.</p></div>
-    </div>
-  </section>
-
-  <!-- FOUNDER SECTION -->
-  <section id="founder" class="reveal">
-    <h2 class="section-title">Founder</h2>
-    <div class="founder-card glass-card">
-      <i class="fas fa-user-astronaut" style="font-size: 3.5rem; color:#00E5FF;"></i>
-      <div class="founder-name">Vikas Choudhary</div>
-      <p>Passionate about creating innovative digital products, modern applications, and technology-driven solutions. Leading NOVA OFFICIAL with a vision to empower creators and businesses through high‑performance software & AI.</p>
-    </div>
-  </section>
-
-  <!-- TESTIMONIALS SECTION (Placeholder, no fake reviews) -->
-  <section id="testimonials" class="reveal">
-    <h2 class="section-title">Client Testimonials</h2>
-    <div class="testimonial-placeholder glass-card">
-      <i class="fas fa-comments"></i>
-      <h3 style="margin: 15px 0;">Premium Preview Mode</h3>
-      <p>Genuine testimonials will appear after client collaborations. We value authentic feedback — no fabricated reviews. Stay tuned for real success stories from our partners.</p>
-      <div style="margin-top: 20px; font-size:0.8rem; border-top: 1px dashed #00E5FF; padding-top: 15px;">⚡ Coming Soon ⚡</div>
-    </div>
-  </section>
-
-  <!-- CONTACT SECTION -->
-  <section id="contact" class="reveal">
-    <h2 class="section-title">Let's Build Something Great</h2>
-    <div class="contact-card glass-card">
-      <i class="fab fa-telegram-plane" style="font-size: 3rem; color: #00E5FF;"></i>
-      <p style="margin: 20px 0; font-size:1.1rem;">Interested in working together? Reach out through Telegram.</p>
-      <!-- CORRECTED TELEGRAM LINK -->
-      <a href="https://t.me/nova_official2" target="_blank" class="telegram-btn" style="color:white; background: #0A0A0A; gap: 12px;"><i class="fab fa-telegram"></i> Contact on Telegram</a>
-    </div>
-  </section>
-</main>
-
-<!-- FOOTER (includes logo, quick links, founder, copyright) -->
-<footer>
-  <div class="footer-content">
-    <div class="footer-logo"><img src="https://i.ibb.co/Mkn5Hc9X/file-00000000d28472079ed407f3fc4882ca.png" alt="NOVA OFFICIAL Logo" style="height: 55px;"></div>
-    <div class="footer-links">
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
-    <div><span>Founder: Vikas Choudhary</span></div>
   </div>
-  <div class="copyright">© 2026 NOVA OFFICIAL. All Rights Reserved.</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-wrap">
+      <div class="reveal">
+        <span class="eyebrow">About NOVA</span>
+        <h2>An independent studio focused on <span class="gradient-text">practical, scalable software</span>.</h2>
+        <p>NOVA is an independent software development studio focused on building practical and scalable digital products. We work closely with each client to understand their actual needs, then design and develop software that fits the way they work.</p>
+        <p>We don't chase trends or overpromise. We build clean, reliable Android apps, websites, web applications, business management systems, AI-powered tools and automation — using a modern technology stack and a clear, honest process.</p>
+        <p>Every project at NOVA is treated as a long-term partnership, not a one-time delivery. That means transparent discussions, direct communication, and software that keeps working as your business grows.</p>
+      </div>
+      <div class="about-visual reveal" aria-hidden="true">
+        <div class="ring r3"></div>
+        <div class="ring r2"></div>
+        <div class="ring r1"></div>
+        <div class="core"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">What We Build</span>
+      <h2>Services built around <span class="gradient-text">real business needs</span></h2>
+      <p>From mobile apps to AI-powered tools — every service is tailored to your goals, your users and your workflow.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        </div>
+        <h3>Android App Development</h3>
+        <p>Native and modern Android applications built with clean architecture, smooth UI and solid performance for your users.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3>Website Development</h3>
+        <p>Fast, responsive and SEO-friendly websites designed to represent your brand clearly and convert visitors into customers.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <h3>Web App Development</h3>
+        <p>Interactive web applications with dashboards, user accounts, real-time features and secure data handling.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>
+        </div>
+        <h3>Business Management Systems</h3>
+        <p>Custom internal tools — inventory, CRM, billing, reporting — designed around how your business actually operates.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 0-4 4v2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2h-2V6a4 4 0 0 0-4-4z"/><circle cx="12" cy="15" r="2"/></svg>
+        </div>
+        <h3>AI-Powered Solutions</h3>
+        <p>Practical AI integrations — smart assistants, content tools, document processing — built to solve specific problems.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </div>
+        <h3>Automation Tools</h3>
+        <p>Workflow automation that removes repetitive tasks, connects your tools and saves hours of manual work every week.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <h3>Custom Software Development</h3>
+        <p>Bespoke software built from the ground up when off-the-shelf tools don't fit your business requirements.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.22-8.56"/><polyline points="21 4 21 10 15 10"/></svg>
+        </div>
+        <h3>Software Maintenance & Support</h3>
+        <p>Ongoing updates, bug fixes, performance tuning and feature additions to keep your software running smoothly.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h3>Consultation & Planning</h3>
+        <p>Clear discussions about what you need, what's realistic, and the best path to build it — before any code is written.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE -->
+<section id="why">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Why NOVA</span>
+      <h2>A development partner you can <span class="gradient-text">actually talk to</span></h2>
+      <p>No layers, no call centers, no vague timelines. Just direct communication and honest work.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-item reveal">
+        <div class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <div><h4>Direct Communication</h4><p>Speak directly with the person building your software — no middlemen.</p></div>
+      </div>
+      <div class="why-item reveal">
+        <div class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></div>
+        <div><h4>Custom Solutions</h4><p>Every project is designed around your specific requirements, not a template.</p></div>
+      </div>
+      <div class="why-item reveal">
+        <div class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+        <div><h4>Modern Technology Stack</h4><p>Clean, maintainable code using current tools and best practices.</p></div>
+      </div>
+      <div class="why-item reveal">
+        <div class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg></div>
+        <div><h4>Scalable Architecture</h4><p>Software structured to grow with your business, not hold it back.</p></div>
+      </div>
+      <div class="why-item reveal">
+        <div class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
+        <div><h4>Mobile-First Development</h4><p>Interfaces designed for real-world use on phones, tablets and desktops.</p></div>
+      </div>
+      <div class="why-item reveal">
+        <div class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+        <div><h4>Transparent Discussions</h4><p>Honest timelines, clear pricing conversations, and no hidden surprises.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">How We Work</span>
+      <h2>A clear, honest <span class="gradient-text">development process</span></h2>
+      <p>Every project follows a structured path — so you always know what's happening and what comes next.</p>
+    </div>
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-num">STEP 01</div>
+          <h4>Requirement Discussion</h4>
+          <p>We listen carefully to understand your business, goals and the problem you want to solve.</p>
+        </div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-num">STEP 02</div>
+          <h4>Planning</h4>
+          <p>We define the scope, features, tech stack and a realistic timeline for the project.</p>
+        </div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-num">STEP 03</div>
+          <h4>UI / UX Design</h4>
+          <p>Clean, intuitive interfaces designed for your users and aligned with your brand.</p>
+        </div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-num">STEP 04</div>
+          <h4>Development</h4>
+          <p>We build the product using modern tools, with regular updates so you're never in the dark.</p>
+        </div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-num">STEP 05</div>
+          <h4>Testing</h4>
+          <p>Careful testing across devices and scenarios to catch issues before your users do.</p>
+        </div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-num">STEP 06</div>
+          <h4>Deployment</h4>
+          <p>We handle the launch — whether it's the Play Store, a live website or your internal systems.</p>
+        </div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-num">STEP 07</div>
+          <h4>Support</h4>
+          <p>Ongoing maintenance, updates and improvements so your software keeps working well.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Current Work</span>
+      <h2>Projects in the <span class="gradient-text">NOVA pipeline</span></h2>
+      <p>A transparent look at what we're building right now. No inflated numbers — just real work in progress.</p>
+    </div>
+    <div class="portfolio-grid">
+      <div class="project-card reveal">
+        <div class="logo">FC</div>
+        <h3>NOVA_FileClean Lite</h3>
+        <p>A lightweight Android utility designed to help users organize and clean up files on their device with minimal effort.</p>
+        <span class="status dev">In Development</span>
+      </div>
+      <div class="project-card reveal">
+        <div class="logo">SV</div>
+        <h3>NOVA_SmartVault</h3>
+        <p>A secure digital vault concept for storing sensitive information with a focus on privacy and easy access.</p>
+        <span class="status plan">Planned</span>
+      </div>
+      <div class="project-card reveal">
+        <div class="logo">OA</div>
+        <h3>NOVA_OfflineAssistant</h3>
+        <p>An early-stage concept for an offline-capable assistant that works without constant internet connectivity.</p>
+        <span class="status concept">Concept</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INQUIRY -->
+<section id="inquiry">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Start a Project</span>
+      <h2>Tell us about <span class="gradient-text">your idea</span></h2>
+      <p>Fill out the form below. Your details will be sent directly to our WhatsApp so we can start a real conversation.</p>
+    </div>
+    <div class="inquiry-wrap">
+      <div class="inquiry-info reveal">
+        <h3>Let's talk about your project</h3>
+        <p>Share as much detail as you can. The more we understand upfront, the more useful our first conversation will be.</p>
+        <div class="contact-row">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.78 11.78 0 0 0 12.04 0C5.5 0 .2 5.3.2 11.84c0 2.09.55 4.13 1.6 5.93L0 24l6.4-1.68a11.8 11.8 0 0 0 5.64 1.44h.01c6.54 0 11.84-5.3 11.84-11.84 0-3.16-1.23-6.13-3.37-8.44z"/></svg>
+          <a href="https://wa.me/919024395877" target="_blank" rel="noopener">+91 90243 95877</a>
+        </div>
+        <div class="contact-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href="mailto:officialnova9024@gmail.com">officialnova9024@gmail.com</a>
+        </div>
+        <div class="contact-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span>Usually responds within 24 hours</span>
+        </div>
+      </div>
+
+      <form class="inquiry reveal" id="inquiryForm" novalidate>
+        <div class="form-row">
+          <div class="field">
+            <label for="f-name">Your Name</label>
+            <input id="f-name" name="name" type="text" required placeholder="John Doe" />
+          </div>
+          <div class="field">
+            <label for="f-email">Email</label>
+            <input id="f-email" name="email" type="email" required placeholder="you@example.com" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="f-phone">Phone</label>
+            <input id="f-phone" name="phone" type="tel" placeholder="+91 ..." />
+          </div>
+          <div class="field">
+            <label for="f-type">Project Type</label>
+            <select id="f-type" name="type" required>
+              <option value="">Select a service</option>
+              <option>Android App Development</option>
+              <option>Website Development</option>
+              <option>Web App Development</option>
+              <option>Business Management System</option>
+              <option>AI-Powered Solution</option>
+              <option>Automation Tool</option>
+              <option>Custom Software</option>
+              <option>Maintenance & Support</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-budget">Budget Range</label>
+          <select id="f-budget" name="budget">
+            <option value="">Select a range (optional)</option>
+            <option>Under ₹25,000</option>
+            <option>₹25,000 – ₹75,000</option>
+            <option>₹75,000 – ₹2,00,000</option>
+            <option>₹2,00,000+</option>
+            <option>Let's discuss</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-details">Project Details</label>
+          <textarea id="f-details" name="details" required placeholder="Tell us about your idea, goals, users and any important features..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">
+          Send via WhatsApp
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">FAQ</span>
+      <h2>Questions clients <span class="gradient-text">usually ask</span></h2>
+      <p>Honest answers to the things most people want to know before starting a project.</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <button class="faq-q">How much does a project cost?<span class="plus"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Every project is different, so there is no fixed price list. The cost depends on the scope, features, platforms and complexity. After a short discussion about your requirements, we'll share a realistic estimate tailored to your project.</div></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">How long does development take?<span class="plus"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Timelines vary based on the size of the project. A simple website or small app may take a few weeks, while larger business systems or complex apps can take several months. We'll give you a realistic timeline before we begin.</div></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Do you provide support after delivery?<span class="plus"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. We offer software maintenance and support to keep your product running smoothly — including bug fixes, updates, performance improvements and new features as your business grows.</div></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Can you build fully custom solutions?<span class="plus"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Absolutely. Custom software is one of the main things we do. If an off-the-shelf tool doesn't fit your workflow, we can design and build something tailored specifically to how your business operates.</div></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">How do we get started?<span class="plus"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Just reach out via WhatsApp or email with a short description of your idea. We'll set up a discussion, understand your requirements, and then share a clear plan with scope, timeline and next steps.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-card reveal">
+      <span class="eyebrow">Contact</span>
+      <h2>Ready to build something <span class="gradient-text">useful</span>?</h2>
+      <p>Reach out directly on WhatsApp or email. We respond personally — usually within 24 hours.</p>
+      <div class="contact-channels">
+        <a class="channel" href="https://wa.me/919024395877" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.78 11.78 0 0 0 12.04 0C5.5 0 .2 5.3.2 11.84c0 2.09.55 4.13 1.6 5.93L0 24l6.4-1.68a11.8 11.8 0 0 0 5.64 1.44h.01c6.54 0 11.84-5.3 11.84-11.84 0-3.16-1.23-6.13-3.37-8.44z"/></svg>
+          WhatsApp
+        </a>
+        <a class="channel" href="mailto:officialnova9024@gmail.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Email
+        </a>
+      </div>
+      <div class="response-note">Usually responds within 24 hours.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRIVACY -->
+<section id="privacy">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Privacy</span>
+      <h2>Our <span class="gradient-text">privacy promise</span></h2>
+    </div>
+    <div class="privacy reveal">
+      <h3>How we handle your information</h3>
+      <p>We respect your privacy and keep things simple. This is how we treat the information you share with us:</p>
+      <ul>
+        <li>Contact information you share (name, email, phone, project details) is used only to communicate with you about your project.</li>
+        <li>We do not sell, rent or trade your personal information to anyone.</li>
+        <li>We do not use misleading practices, hidden tracking or deceptive forms.</li>
+        <li>Project details you share are kept confidential and are not published without your permission.</li>
+        <li>You can ask us to remove your information at any time by contacting us directly.</li>
+      </ul>
+      <p>If you have any questions about this policy, reach out at <a href="mailto:officialnova9024@gmail.com" style="color:var(--accent-2)">officialnova9024@gmail.com</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#home" class="brand">
+          <span class="brand-mark" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>
+          </span>
+          NOVA
+        </a>
+        <p>Independent software development studio. Custom apps, websites and business systems built for real businesses.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navigate</h5>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#process">Process</a>
+        <a href="#portfolio">Work</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <a href="https://wa.me/919024395877" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="mailto:officialnova9024@gmail.com">officialnova9024@gmail.com</a>
+        <a href="#privacy">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> NOVA. All rights reserved.</span>
+      <span>Built with care by NOVA.</span>
+    </div>
+  </div>
 </footer>
 
-<!-- BACK TO TOP BUTTON -->
-<div class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></div>
+<!-- Floating buttons -->
+<a class="float-wa" href="https://wa.me/919024395877" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.78 11.78 0 0 0 12.04 0C5.5 0 .2 5.3.2 11.84c0 2.09.55 4.13 1.6 5.93L0 24l6.4-1.68a11.8 11.8 0 0 0 5.64 1.44h.01c6.54 0 11.84-5.3 11.84-11.84 0-3.16-1.23-6.13-3.37-8.44zM12.04 21.6h-.01a9.76 9.76 0 0 1-4.97-1.36l-.36-.21-3.8 1 1.02-3.7-.23-.38a9.75 9.75 0 0 1-1.5-5.11c0-5.38 4.38-9.76 9.76-9.76 2.6 0 5.05 1.01 6.9 2.85a9.68 9.68 0 0 1 2.85 6.9c0 5.38-4.38 9.77-9.66 9.77zm5.42-7.36c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.22 3.08.15.2 2.1 3.2 5.08 4.49.71.3 1.26.48 1.69.62.71.22 1.36.19 1.87.12.57-.08 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35z"/></svg>
+</a>
+<a class="sticky-quote" id="stickyQuote" href="#inquiry">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>
+  Get a Quote
+</a>
 
 <script>
-  // ========== LOADING SCREEN ==========
+  // Loader
   window.addEventListener('load', () => {
-    const loader = document.getElementById('loadingScreen');
-    setTimeout(() => {
-      loader.classList.add('hidden');
-      setTimeout(() => { if(loader) loader.style.display = 'none'; }, 800);
-    }, 1200);
+    setTimeout(() => document.getElementById('loader').classList.add('hidden'), 400);
   });
 
-  // ========== PARTICLES BACKGROUND ==========
-  const canvas = document.getElementById('particles-canvas');
-  let ctx = canvas.getContext('2d');
-  let particles = [];
-  let particleCount = 180;
+  // Year
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-  function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  }
-  window.addEventListener('resize', resizeCanvas);
-  resizeCanvas();
-
-  class Particle {
-    constructor() {
-      this.x = Math.random() * canvas.width;
-      this.y = Math.random() * canvas.height;
-      this.size = Math.random() * 2.2 + 0.8;
-      this.speedX = (Math.random() - 0.5) * 0.5;
-      this.speedY = (Math.random() - 0.5) * 0.4;
-      this.color = `rgba(0, 229, 255, ${Math.random() * 0.4 + 0.2})`;
-    }
-    update() {
-      this.x += this.speedX;
-      this.y += this.speedY;
-      if (this.x < 0) this.x = canvas.width;
-      if (this.x > canvas.width) this.x = 0;
-      if (this.y < 0) this.y = canvas.height;
-      if (this.y > canvas.height) this.y = 0;
-    }
-    draw() {
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-      ctx.fillStyle = this.color;
-      ctx.fill();
-      ctx.shadowBlur = 6;
-      ctx.shadowColor = "#00E5FF";
-    }
-  }
-
-  function initParticles() {
-    particles = [];
-    for (let i = 0; i < particleCount; i++) {
-      particles.push(new Particle());
-    }
-  }
-  function animateParticles() {
-    if (!ctx) return;
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.shadowBlur = 0;
-    for (let p of particles) {
-      p.update();
-      p.draw();
-    }
-    requestAnimationFrame(animateParticles);
-  }
-  initParticles();
-  animateParticles();
-
-  // ========== MOUSE GLOW EFFECT ==========
-  const glow = document.getElementById('mouseGlow');
-  document.addEventListener('mousemove', (e) => {
-    if (window.innerWidth > 768) {
-      glow.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
-    }
-  });
-
-  // ========== MOBILE MENU ==========
-  const menuIcon = document.getElementById('menuIcon');
-  const mobileOverlay = document.getElementById('mobileMenuOverlay');
-  const closeMobile = document.getElementById('closeMobileMenu');
-  function openMobileMenu() { mobileOverlay.classList.add('active'); document.body.style.overflow = 'hidden'; }
-  function closeMobileMenuFunc() { mobileOverlay.classList.remove('active'); document.body.style.overflow = ''; }
-  menuIcon?.addEventListener('click', openMobileMenu);
-  closeMobile?.addEventListener('click', closeMobileMenuFunc);
-  document.querySelectorAll('.mobile-menu-links a').forEach(link => {
-    link.addEventListener('click', () => { closeMobileMenuFunc(); });
-  });
-
-  // ========== BACK TO TOP BUTTON ==========
-  const backBtn = document.getElementById('backToTop');
+  // Navbar scroll
+  const nav = document.getElementById('nav');
+  const sticky = document.getElementById('stickyQuote');
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 500) backBtn.classList.add('show');
-    else backBtn.classList.remove('show');
-  });
-  backBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
-
-  // ========== SMOOTH SCROLLING for all anchor links ==========
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
+    if (window.scrollY > 40) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
+    if (window.scrollY > 600) sticky.classList.add('visible'); else sticky.classList.remove('visible');
   });
 
-  // ========== BUTTON SCROLL (hero buttons) ==========
-  document.getElementById('viewServicesBtn')?.addEventListener('click', () => {
-    document.getElementById('services').scrollIntoView({ behavior: 'smooth' });
+  // Mobile menu
+  const burger = document.getElementById('burger');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    navLinks.classList.toggle('open');
   });
-  document.getElementById('contactBtnHero')?.addEventListener('click', () => {
-    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    burger.classList.remove('open');
+    navLinks.classList.remove('open');
+  }));
 
-  // ========== REVEAL ANIMATIONS (Intersection Observer) ==========
-  const revealElements = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('active');
-        observer.unobserve(entry.target);
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
       }
     });
-  }, { threshold: 0.15 });
-  revealElements.forEach(el => observer.observe(el));
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-q').addEventListener('click', () => {
+      const open = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!open) item.classList.add('open');
+    });
+  });
+
+  // Inquiry form -> WhatsApp
+  const form = document.getElementById('inquiryForm');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('f-name').value.trim();
+    const email = document.getElementById('f-email').value.trim();
+    const phone = document.getElementById('f-phone').value.trim();
+    const type = document.getElementById('f-type').value.trim();
+    const budget = document.getElementById('f-budget').value.trim();
+    const details = document.getElementById('f-details').value.trim();
+
+    if (!name || !email || !type || !details) {
+      alert('Please fill in your name, email, project type and project details.');
+      return;
+    }
+
+    const lines = [
+      `*New Project Inquiry — NOVA*`,
+      ``,
+      `*Name:* ${name}`,
+      `*Email:* ${email}`,
+      phone ? `*Phone:* ${phone}` : null,
+      `*Project Type:* ${type}`,
+      budget ? `*Budget Range:* ${budget}` : null,
+      ``,
+      `*Project Details:*`,
+      details
+    ].filter(Boolean).join('\n');
+
+    const url = `https://wa.me/919024395877?text=${encodeURIComponent(lines)}`;
+    window.open(url, '_blank');
+  });
 </script>
 </body>
 </html>
